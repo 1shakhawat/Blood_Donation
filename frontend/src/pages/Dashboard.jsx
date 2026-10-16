@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-hot-toast'; // success/error feedback er jonno[cite: 1]
+import { toast } from 'react-hot-toast'; 
 
 const Dashboard = () => {
     const [requests, setRequests] = useState([]);
@@ -21,7 +21,7 @@ const Dashboard = () => {
     
     const fetchRequests = async () => {
         try {
-            const res = await fetch(`http://localhost:5000/api/requests?search=${search}&group=${group}&page=${page}&limit=5`);
+            const res = await fetch(`https://blood-donation-backend-b4go.onrender.com/api/requests?search=${search}&group=${group}&page=${page}&limit=5`);
             const data = await res.json();
             setRequests(data);
         } catch (err) {
@@ -29,11 +29,11 @@ const Dashboard = () => {
         }
     };
 
-    
+
     const handleUpdate = async (id, status) => {
         const token = localStorage.getItem('token');
         try {
-            const res = await fetch(`http://localhost:5000/api/requests/${id}`, {
+            const res = await fetch(`https://blood-donation-backend-b4go.onrender.com/api/requests/${id}`, {
                 method: 'PUT',
                 headers: { 
                     'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const Dashboard = () => {
         
         const token = localStorage.getItem('token');
         try {
-            const res = await fetch(`http://localhost:5000/api/requests/${id}`, {
+            const res = await fetch(`https://blood-donation-backend-b4go.onrender.com/api/requests/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -74,7 +74,7 @@ const Dashboard = () => {
         e.preventDefault();
         const token = localStorage.getItem('token');
         try {
-            const res = await fetch('http://localhost:5000/api/requests', {
+            const res = await fetch('https://blood-donation-backend-b4go.onrender.com/api/requests', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
@@ -196,7 +196,7 @@ const Dashboard = () => {
                                      ))
                                  ) : (
                                      <tr>
-                                         {/* Column span ektu barano holo jeno empty message thik thake */}
+                                        
                                          <td colSpan={userRole === 'admin' ? "6" : "5"} className="text-center font-bold text-gray-500 py-4">
                                              No data found.
                                          </td>
@@ -206,7 +206,7 @@ const Dashboard = () => {
                          </table>
                     </div>
 
-                    {/* Pagination UI[cite: 2] */}
+                    
                     <div className="flex justify-between items-center mt-4">
                         <button className="btn btn-sm btn-outline" disabled={page === 1} onClick={() => setPage(page - 1)}>Previous</button>
                         <span className="font-bold">Page {page}</span>

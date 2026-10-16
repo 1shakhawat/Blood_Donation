@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast'; // Success/error feedback er jonno[cite: 1]
+import { Toaster } from 'react-hot-toast'; 
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
