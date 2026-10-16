@@ -18,7 +18,7 @@ const Login = () => {
             const data = await res.json();
             
             if (res.ok) {
-                // Save JWT token in localStorage[cite: 1]
+                
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('userRole', data.user.role);
                 toast.success('Login successful!');
